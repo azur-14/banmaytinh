@@ -17,8 +17,8 @@ class OrderService {
   OrderService._();
   static final OrderService instance = OrderService._();
 
-  static const String _baseUrl = 'https://orderservice-production-e536.up.railway.app.up.railway.app/api';
-  static const String _cartUrl = 'https://orderservice-production-e536.up.railway.app.up.railway.app/api/carts';  final http.Client _http = http.Client();
+  static const String _baseUrl = 'https://orderservice-production-e536.up.railway.app/api';
+  static const String _cartUrl = 'https://orderservice-production-e536.up.railway.app/api/carts';  final http.Client _http = http.Client();
   final Uuid _uuid = Uuid();
 
   // ───────────────────────────────────────────────
@@ -432,7 +432,7 @@ class OrderService {
   }
 
   static Future<List<Order>> fetchOrdersByUserId(String userId) async {
-    final uri = Uri.parse('https://orderservice-production-e536.up.railway.app.up.railway.app/api/orders/user/$userId');
+    final uri = Uri.parse('https://orderservice-production-e536.up.railway.app.up/api/orders/user/$userId');
     final resp = await http.get(uri);
     if (resp.statusCode == 200) {
       final data = json.decode(resp.body) as List<dynamic>;
